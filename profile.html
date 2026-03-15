@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Personal Profile Form</title>
+
+<style>
+body{
+    background-color:#004186;
+    font-family:Arial;
+}
+
+form{
+    width:500px;
+    margin:auto;
+    background-color:#fc0000;
+    padding:20px;
+    border-radius:10px;
+    border:2px solid #000000;
+}
+
+h2{
+    text-align:center;
+    color:#ffffff;
+}
+
+label{
+    font-weight:bold;
+    display:block;
+    margin-top:10px;
+}
+
+input, textarea{
+    width:100%;
+    padding:6px;
+    margin-top:4px;
+    margin-bottom:10px;
+    border:1px solid #ff00cc;
+    border-radius:5px;
+    background-color:#ffffff;
+}
+
+/* Radio & Checkbox containers */
+div{
+    background-color:#f0f8ff;
+    padding:8px;
+    border-radius:5px;
+    margin-bottom:10px;
+}
+
+/* Buttons container */
+form > div:last-child{
+    text-align:center;
+    background-color:transparent;
+}
+
+button{
+    padding:8px 15px;
+    margin:5px;
+    background-color:#3399ff;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    background-color:#2673cc;
+}
+</style>
+</head>
+
+<body>
+
+<form>
+<h2>Personal Profile Form</h2>
+
+<label>Name:</label>
+<input type="text" required>
+
+<label>Age:</label>
+<input type="number" required>
+
+<label>Contact Number:</label>
+<input type="text" pattern="[0-9]{10}" placeholder="10 digit number" required>
+
+<label>Roll Number:</label>
+<input type="text" pattern="CB\.SC\.U4CSE25[0-9]{3}" placeholder="CB.SC.U4CSE25XXX" required>
+
+<label>Address:</label>
+<textarea maxlength="100" placeholder="Maximum 100 characters"></textarea>
+
+<label>About Yourself:</label>
+<textarea maxlength="500" placeholder="Maximum 500 characters"></textarea>
+
+<label>Nationality:</label>
+<div>
+<input type="radio" name="nation"> Indian
+<input type="radio" name="nation"> NRI
+</div>
+
+<label>Hobbies:</label>
+<div>
+<input type="checkbox"> Reading
+<input type="checkbox"> Sports
+<input type="checkbox"> Music
+<input type="checkbox"> Traveling
+</div>
+
+<div>
+<button type="submit">Submit</button>
+<button type="reset">Reset</button>
+<button type="button">Click</button>
+</div>
+
+</form>
+
+</body>
+</html>

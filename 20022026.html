@@ -1,0 +1,72 @@
+    <!DOCTYPE html>
+    <html>
+        
+        <body style="background-color: black;color: palevioletred; background: linear-gradient(to top, black,white,green);">
+            <form>
+                <input type="checkbox" id="gender" value="male" >male
+                <br>
+                <input type="checkbox" id="gender" value="female" >female
+                <br>
+                <input type="checkbox" id="gender" value="other" >other
+                <br>
+                <input type="radio" name="genders" value="male" >male
+                <br>
+                <input type="radio" name="genders" value="female" >female
+                <br>
+                <input type="radio" name="genders" value="other" >other
+                <br>
+                <label for="text">Enter text</label>
+                <input type="text" id="names" placeholder="Fill the box" minlength="10" maxlength="20" >
+                <br>
+                <label for="abc">enter password :</label>
+                <input type="password" id="abc" placeholder="Enter password" maxlength="15" minlength="10"   >
+                <br>
+                <label for="rollno">Enter roll number :</label>
+                <input type="text" id="rollno" pattern="[A-Z]{2}\.[A-Z]{2}\.[A-Z][0-9][A-Z]{3}[0-9]{5}" placeholder="Enter roll number" minlength="16" maxlength="17">
+                <br>
+                <input type="submit" id="submitbutton" value="submit">
+                <input type="reset" id="resetbutton" value="reset">
+                <br>
+                <input type="textarea" id="abc" placeholder="Enter password" tex maxlength="15" minlength="10" required>
+                <hr>
+                <br>
+                <fieldset>
+                    <legend>Client Details</legend>
+                    <input type="text" id="Name" />
+                    <input type="text" id="Phone" />
+                    </fieldset>
+                    <fieldset>
+                    <legend>Order Details</legend>
+                    <input type="text" id="Quantity" />
+                    <textarea cols="40" rows="10"
+                    id="Remarks"></textarea>
+                    </fieldset>
+            </form>
+            <select name="gender">
+    <option value="Value 1">Male</option>
+    <option value="Value 2">Female</option>
+    <option value="Value 3">Other</option>
+    </select>
+
+            <img src="Screenshot 2026-02-19 104137.png" height="500px" width="1500px">
+            <br>
+            <hr>
+            <h2>My Iframe Example</h2>
+
+    <!-- Links -->
+    <a href="https://www.amrita.edu/" target="myframe">Home</a> |
+    <a href="https://www.amrita.edu/about/" target="myframe">About</a> |
+    <a href="https://www.amrita.edu/academics/" target="myframe">Academics</a>
+
+    <br><br>
+
+    <!-- Iframe -->
+    <iframe name="myframe"
+            width="800"
+            height="400"
+            style="border:2px solid black;">
+    </iframe>
+
+
+        </body>
+    </html> 

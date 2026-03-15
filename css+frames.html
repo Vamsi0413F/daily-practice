@@ -1,0 +1,25 @@
+<!--
+The webpage must contain 3 frames arranged as follows:
+
+Top Frame (Header Frame – 20% height)
+Display the university name and logo.
+Use an Image Map on the logo with clickable areas for: 
+Home,Departments,Contact
+Left Frame (Navigation Frame – 30% width)
+Include a Student Lab Registration Form with the following fields: 
+Student Name (Text Box),Register Number (Text Box),Department (Drop-down List),Year (Radio Buttons),Lab Subject (Checkboxes),
+Submit and Reset buttons
+Right Frame  :Display a Lab Schedule Table showing:
+Lab ID,Lab Name,Faculty In-charge,Day,Time Slot,Available Systems
+-->
+<!DOCTYPE html>
+<html>
+    <head><title>Amrita vishwa Vidyapeetam</title></head>
+    <FRAMESET ROWS="20,70">
+    <FRAME NAME ="first_row" src="college Details.html" scrolling ="yes">
+        <FRAMESET Cols="30,70">
+        <FRAME NAME ="second_col" src="lab registration form.html" scrolling ="yes">
+        <FRAME NAME ="third_col" src="lab schedule.html" scrolling ="yes">
+    </frameset>
+    </FRAMESET>
+</html>
