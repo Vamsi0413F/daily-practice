@@ -3,11 +3,11 @@
         
         <body style="background-color: black;color: palevioletred; background: linear-gradient(to top, black,white,green);">
             <form>
-                <input type="checkbox" id="gender" value="male" >male
+                <input type="checkbox" id="gender" name="a" value="male" >male
                 <br>
-                <input type="checkbox" id="gender" value="female" >female
+                <input type="checkbox" id="gender" name="a" value="female" >female
                 <br>
-                <input type="checkbox" id="gender" value="other" >other
+                <input type="checkbox" id="gender" name="a" value="other" >other
                 <br>
                 <input type="radio" name="genders" value="male" >male
                 <br>
@@ -15,14 +15,14 @@
                 <br>
                 <input type="radio" name="genders" value="other" >other
                 <br>
-                <label for="text">Enter text</label>
-                <input type="text" id="names" placeholder="Fill the box" minlength="10" maxlength="20" >
+                <label for="names" style="width: 100px; display: inline-block">Enter text</label>
+                <input type="text" id="names" placeholder="Fill the box" minlength="10" maxlength="20" style="width: 400px;display: inline-block;" >    
                 <br>
-                <label for="abc">enter password :</label>
-                <input type="password" id="abc" placeholder="Enter password" maxlength="15" minlength="10"   >
+                <label for="abc" style="width: 100px;display: inline-block;">enter password :</label>
+                <input type="password" id="abc" placeholder="Enter password" maxlength="15" minlength="10" style="width: 400px;display: inline-block;"  >
                 <br>
-                <label for="rollno">Enter roll number :</label>
-                <input type="text" id="rollno" pattern="[A-Z]{2}\.[A-Z]{2}\.[A-Z][0-9][A-Z]{3}[0-9]{5}" placeholder="Enter roll number" minlength="16" maxlength="17">
+                <label for="rollno" style="width: 100px; display: inline-block">Enter roll number :</label>
+                <input type="text" id="rollno" pattern="[A-Z]{2}\.[A-Z]{2}\.[A-Z][0-9][A-Z]{3}[0-9]{5}" placeholder="Enter roll number" minlength="16" maxlength="17" style="width: 400px;display: inline-block;">
                 <br>
                 <input type="submit" id="submitbutton" value="submit">
                 <input type="reset" id="resetbutton" value="reset">
