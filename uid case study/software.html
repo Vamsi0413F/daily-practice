@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RMS</title>
+</head>
+
+<body style="margin:0; font-family: Arial; background:#eef2f6;">
+  <div style="position:fixed; top:0; width:100%; background:#f5f7fa; z-index:1000; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+
+    <div style="display:flex; justify-content:space-between; padding:15px 40px;">
+      <div>
+        <b>Resource Management Guru</b><br>
+        <span style="font-size:12px; color:gray;">A unified gateway to practical RMS workflows</span>
+      </div>
+
+      <div>
+        <span style="margin:0 15px;">About Us</span>
+        <span style="margin:0 15px;">Our Tools</span>
+        <span style="margin:0 15px;">Reads</span>
+        <span style="margin:0 15px;">Team</span>
+        <button style="padding:10px 20px; border:none; border-radius:20px; background:#0b1f3a; color:white;">
+          Find Tool
+        </button>
+      </div>
+    </div>
+
+    <div style="padding:10px 40px; background:#e9edf2; font-size:14px;">
+      CURRENT WORKSPACE → <b>SOFTWARE INDUSTRY</b>
+    </div>
+
+  </div>
+
+  <div style="margin-top:140px;">
+
+    <!-- HERO -->
+    <div style="background:linear-gradient(to right,#0b1f3a,#112f5c); color:white; padding:60px 40px; display:flex;">
+
+      <div style="width:60%;">
+        <h1 style="font-size:40px;">Software Industry Resource Management</h1>
+
+        <p style="max-width:500px;">
+          Register teams, track working hours, and analyze resource capacity efficiently.
+        </p>
+
+        <button style="padding:15px 25px; border-radius:30px; border:none; margin-top:20px;">
+          View Analytics
+        </button>
+      </div>
+
+      <!-- ✅ UPDATED STATS -->
+      <div style="width:40%;">
+
+        <div style="background:#2c3e50; padding:20px; margin:10px; border-radius:15px;">
+          Teams: <b id="teams">0</b>
+        </div>
+
+        <div style="background:#2c3e50; padding:20px; margin:10px; border-radius:15px;">
+          Persons: <b id="personsTotal">0</b>
+        </div>
+
+        <div style="background:#2c3e50; padding:20px; margin:10px; border-radius:15px;">
+          Avg Hours/Person: <b id="avg">0</b>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div style="display:flex; padding:40px; gap:20px;">
+
+      <!-- FORM -->
+      <div style="width:50%; background:white; padding:30px; border-radius:20px;">
+
+        <h2>Register Team</h2>
+
+        <p>Team Name</p>
+        <input id="name" type="text" style="width:100%; padding:10px; border-radius:10px; border:1px solid #ccc;">
+
+        <p>Number of Persons</p>
+        <input id="persons" type="number" style="width:100%; padding:10px; border-radius:10px; border:1px solid #ccc;">
+
+        <p>Hours per Person</p>
+        <input id="hours" type="number" style="width:100%; padding:10px; border-radius:10px; border:1px solid #ccc;">
+
+        <button onclick="addTeam()" style="margin-top:20px; padding:12px; width:100%; background:#0b1f3a; color:white; border:none; border-radius:10px;">
+          Add Team
+        </button>
+
+      </div>
+
+      <!-- TABLE -->
+      <div style="width:50%; background:white; padding:30px; border-radius:20px;">
+
+        <h2>Team Directory</h2>
+
+        <table border="1" cellspacing="0" cellpadding="10" style="width:100%; border-collapse:collapse;" id="table">
+
+          <tr style="background:#f0f2f5;">
+            <th>ID</th>
+            <th>Name</th>
+            <th>Persons</th>
+            <th>Hours</th>
+            <th>Total</th>
+          </tr>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ✅ UPDATED JS -->
+  <script>
+
+  let id = 1;
+  let totalTeams = 0;
+  let totalPersons = 0;
+  let totalHours = 0;
+
+  // LOAD SAVED DATA WHEN PAGE OPENS
+  window.onload = function () {
+
+    let savedData = localStorage.getItem("teamsData");
+
+    if(savedData){
+
+      let teams = JSON.parse(savedData);
+
+      teams.forEach(function(team){
+
+        addRow(team.id, team.name, team.persons, team.hours);
+
+        id = team.id + 1;
+
+        totalTeams++;
+        totalPersons += team.persons;
+        totalHours += (team.persons * team.hours);
+
+      });
+
+      updateStats();
+    }
+  };
+
+  function addTeam() {
+
+    let name = document.getElementById("name").value;
+    let persons = parseInt(document.getElementById("persons").value);
+    let hours = parseInt(document.getElementById("hours").value);
+
+    if(name=="" || isNaN(persons) || isNaN(hours)){
+      alert("Fill all fields correctly");
+      return;
+    }
+
+    // add row to table
+    addRow(id, name, persons, hours);
+
+    // update totals
+    totalTeams++;
+    totalPersons += persons;
+    totalHours += (persons * hours);
+
+    updateStats();
+
+    // SAVE TO LOCAL STORAGE
+    let teams = localStorage.getItem("teamsData");
+
+    if(teams){
+      teams = JSON.parse(teams);
+    }
+    else{
+      teams = [];
+    }
+
+    teams.push({
+      id:id,
+      name:name,
+      persons:persons,
+      hours:hours
+    });
+
+    localStorage.setItem("teamsData", JSON.stringify(teams));
+
+    id++;
+
+    // clear inputs
+    document.getElementById("name").value = "";
+    document.getElementById("persons").value = "";
+    document.getElementById("hours").value = "";
+  }
+
+  function addRow(teamId, name, persons, hours){
+
+    let total = persons * hours;
+
+    let table = document.getElementById("table");
+
+    let row = table.insertRow();
+
+    row.insertCell(0).innerHTML = teamId;
+    row.insertCell(1).innerHTML = name;
+    row.insertCell(2).innerHTML = persons;
+    row.insertCell(3).innerHTML = hours;
+    row.insertCell(4).innerHTML = total;
+  }
+
+  function updateStats(){
+
+    document.getElementById("teams").innerHTML = totalTeams;
+    document.getElementById("personsTotal").innerHTML = totalPersons;
+
+    if(totalPersons > 0){
+      document.getElementById("avg").innerHTML =
+      (totalHours / totalPersons).toFixed(2);
+    }
+  }
+
+</script>
+
+</body>
+</html>

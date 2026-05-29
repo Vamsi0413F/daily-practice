@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admission Form</title>
+    <style>
+        body {
+            font-family: Arial;
+            padding: 20px;
+        }
+        .form-section {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 15px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Student Admission Portal</h2>
+
+<label>Click here for Admission Procedure:</label><br>
+<input type="text" onfocus="showProcedure()" placeholder="Click to see procedure">
+
+<br><br>
+
+<label>Select Admission Type:</label><br>
+<button onclick="loadForm('ug')">Undergraduate</button>
+<button onclick="loadForm('pg')">Postgraduate</button>
+
+<div id="formContainer" class="form-section">
+
+    <h3>Admission Form</h3>
+
+    Name: <input type="text"><br><br>
+
+    Date of Birth: <input type="date" id="dob">
+    <button onclick="checkEligibility()">Check Eligibility</button>
+    <p id="result"></p>
+
+    <br>
+
+    Select Courses:<br>
+    <select multiple>
+        <option>BCA</option>
+        <option>BBA</option>
+        <option>B.Tech</option>
+        <option>MCA</option>
+        <option>MBA</option>
+    </select>
+
+    <br><br>
+
+    <button onclick="confirmSubmit()">Submit</button>
+
+</div>
+
+<script>
+
+function showProcedure() {
+    alert("Admission Procedure:\n1. Fill form\n2. Check eligibility\n3. Select courses\n4. Submit form");
+}
+
+function loadForm(type) {
+    document.getElementById("formContainer").style.display = "block";
+    
+    if(type === 'ug') {
+        alert("You selected Undergraduate Admission");
+    } else {
+        alert("You selected Postgraduate Admission");
+    }
+}
+
+function checkEligibility() {
+    let dob = document.getElementById("dob").value;
+    let birthYear = new Date(dob).getFullYear();
+    let currentYear = new Date().getFullYear();
+    let age = currentYear - birthYear;
+
+    if(age >= 17) {
+        document.getElementById("result").innerHTML = "Eligible for admission";
+    } else {
+        document.getElementById("result").innerHTML = "Not eligible";
+    }
+}
+
+function confirmSubmit() {
+    let confirmMsg = confirm("Do you confirm the details?");
+    
+    if(confirmMsg) {
+        alert("Form Submitted Successfully!");
+    } else {
+        alert("Submission Cancelled");
+    }
+}
+
+</script>
+
+</body>
+</html>

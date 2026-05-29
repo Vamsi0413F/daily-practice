@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <form name="myForm" onsubmit="validate()">
+        <input type="text" name="Name">
+        <input type="submit" value="submit"> 
+    </form>
+</html>
+<script>
+    function validate(){
+        if(document.myForm.Name.value == ""){
+            alert("name field is empty")
+        }
+    }
+</script>

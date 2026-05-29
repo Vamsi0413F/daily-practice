@@ -1,0 +1,35 @@
+<!-- <html> 
+<body onload = checkscope();> 
+<script type = "text/javascript"> 
+		var myVar = "global"; // Declare a global variable
+		function  checkscope( ) {
+		var myVar = "local"; // Declare a local variable 		
+        document.write(window.myVar); 
+        document.write("<table>")
+            document.write("<th>")
+                document.write("<td>")
+                document.write("</td>")
+            document.write("</th>")
+        document.write("<table>")
+			} 
+          
+ </script> 
+</body> 
+</html> -->
+<html>
+    <head>
+        <script>
+        function validate()
+        {
+            a=document.myform.Name.value
+            alert(a)
+        }
+        </script>
+    </head>
+    <body>
+        <form name="myform" onsubmit="validate()">
+            <input type="text" name="Name" >
+            <input type="submit" value="Submit" >
+        </form>
+    </body>
+</html>

@@ -1,0 +1,19 @@
+<head>
+<script type="text/javascript">
+function OnFocusInput (input) {
+input.style.border = "1in Solid yellow";
+}
+function OnBlurInput (input) {
+input.style.border = "1in Solid red";
+}
+</script>
+</head>
+<body>
+When the following input field has the focus its text color will be red.
+Click into the input field!
+<br /><br />
+<form>
+<input type="text" onfocus="OnFocusInput (this)" onblur="OnBlurInput (this)"
+value="Custom input field"/>
+</form>
+</body>

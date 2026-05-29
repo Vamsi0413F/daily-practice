@@ -1,0 +1,116 @@
+<script>
+
+// Create form using document.write
+document.write("<form onsubmit='return validateForm()'>");
+
+document.write("Name: <input type='text' id='name' oninput='validateName()'><br><br>");
+
+document.write("Email: <input type='text' id='email' onblur='validateEmail()'><br><br>");
+
+document.write("Mobile: <input type='text' id='mobile'><br><br>");
+
+document.write("Age: <input type='number' id='age'><br><br>");
+
+document.write("Password: <input type='password' id='pass' oninput='checkStrength()'><br><br>");
+
+document.write("Confirm Password: <input type='password' id='cpass' onkeyup='checkMatch()'><br><br>");
+
+document.write("Course: ");
+document.write("<input type='radio' name='course' value='Engineering' onclick='showCourse(this.value)'>Engineering ");
+document.write("<input type='radio' name='course' value='Medical' onclick='showCourse(this.value)'>Medical<br><br>");
+
+document.write("Rating: <select id='rating'>");
+for (let i = 5; i >= 1; i--) {
+  document.write("<option value='" + i + "'>" + i + "</option>");
+}
+document.write("</select><hr><br>");
+
+document.write("Comments: <textarea id='comments' maxlength='500'></textarea><br><br>");
+
+document.write("<input type='checkbox' id='terms' onchange='toggleButton()'> Accept Terms<br><br>");
+
+document.write("<button type='submit' id='submitBtn' disabled>Submit</button>");
+
+document.write("</form>");
+
+
+// -------- VALIDATIONS --------
+
+// Name
+function validateName() {
+  let name = document.getElementById("name").value;
+  let pattern = /^[A-Za-z]{3,}$/;
+  if (!pattern.test(name)) {
+    console.log("Invalid Name");
+  }
+}
+
+// Email
+function validateEmail() {
+  let email = document.getElementById("email").value;
+  let pattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+  if (!pattern.test(email)) {
+    alert("Invalid Gmail");
+  }
+}
+
+// Password strength
+function checkStrength() {
+  let pass = document.getElementById("pass").value;
+  let pattern = /^(?=.*[A-Z])(?=.*[0-9]).{8,}$/;
+
+  if (pattern.test(pass)) {
+    console.log("Strong Password");
+  } else {
+    console.log("Weak Password");
+  }
+}
+
+// Password match
+function checkMatch() {
+  let p1 = document.getElementById("pass").value;
+  let p2 = document.getElementById("cpass").value;
+
+  if (p1 !== p2) {
+    console.log("Passwords do not match");
+  }
+}
+
+// Course
+function showCourse(course) {
+  alert("Selected: " + course);
+}
+
+// Enable button
+function toggleButton() {
+  let check = document.getElementById("terms").checked;
+  document.getElementById("submitBtn").disabled = !check;
+}
+
+// Final validation
+function validateForm() {
+
+  let mobile = document.getElementById("mobile").value;
+  let age = document.getElementById("age").value;
+  let rating = document.getElementById("rating").value;
+  let comments = document.getElementById("comments").value;
+
+  if (!/^[0-9]{10}$/.test(mobile)) {
+    alert("Invalid Mobile");
+    return false;
+  }
+
+  if (age < 18 || age > 100) {
+    alert("Invalid Age");
+    return false;
+  }
+
+  if (rating < 3 && comments.trim() === "") {
+    alert("Comments required");
+    return false;
+  }
+
+  return true;
+}
+
+</script>

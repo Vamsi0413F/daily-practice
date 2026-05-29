@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <form onsubmit="return final()">
+    <input type="text" id="id2" >
+    <br>
+    <input id="id1" type="number" >
+    <br>
+    <input type="submit" value="submit" >
+    <p id="demo"></p>
+    <input type="text" onfocus="OnFocusInput (this)" onblur="OnBlurInput (this)"
+value="Custom input field"/>
+    </form>
+<script>
+    function OnFocusInput (input) {
+input.style.border = "1in Solid yellow";
+}
+function OnBlurInput (input) {
+input.style.border = "1in Solid red";
+}
+    function formValidate(){
+        var mailID = document.getElementById("id2").value;
+        var atpos = mailID.indexOf("@");
+        let validity = true;
+        var dotpos = mailID.lastIndexOf(".");
+        if((atpos<1) || (dotpos - atpos ) <= 5 ){
+            validity = false;
+        }
+        
+        return validity;
+    }
+function myFunction() {
+    var inpObj = document.getElementById("id1").value;
+    let validity = true;
+    var text;
+    if(inpObj < 100 || inpObj > 300){
+        validity=false;
+    }
+    else{
+        validity = true;
+    }
+    return validity;
+    }
+function final(){
+
+    let emailValid = formValidate();
+    let number = myFunction();
+    
+
+    if(!emailValid){
+        alert("Email dengesindhi");
+    }
+
+    if(!number){
+        alert("Phone number dengesindhi");
+    }
+
+    
+
+    if(emailValid && number ){
+        alert("All valid");
+    }
+
+    return false;
+}
+</script>
+</html>
